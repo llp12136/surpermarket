@@ -28,7 +28,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void should_return_score_110_when_calculate_given_price_1() {
+    public void should_return_score_110_when_calculate_given_price_110() {
         Goods goods = new Goods("OTHER", BigDecimal.valueOf(110), GoodsType.OTHER);
         List<Goods> goodsList = Arrays.asList(goods);
         Calculator calculator = new Calculator();
@@ -40,7 +40,7 @@ public class CalculatorTest {
     public void should_return_score_100_when_calculate_given_xigua_apple_xiyiye() {
         Goods apple = new Goods("APPLE", BigDecimal.valueOf(10), GoodsType.APPLE);
         Goods watermelon = new Goods("WATERMELON", BigDecimal.valueOf(30), GoodsType.WATERMELON);
-        Goods xiyiye = new Goods("XIYIYE", BigDecimal.valueOf(20), GoodsType.OTHER);
+        Goods xiyiye = new Goods("WASHER", BigDecimal.valueOf(20), GoodsType.OTHER);
         List<Goods> goodsList = Arrays.asList(apple, watermelon, xiyiye);
         Calculator calculator = new Calculator();
         BigDecimal price = calculator.calculatePrice(goodsList);
@@ -68,5 +68,17 @@ public class CalculatorTest {
         BigDecimal price = calulator.calculatePrice(goodsList);
         int result = calulator.calculateScore(price, goodsList);
         assertEquals(3000, result);
+    }
+
+    @Test
+    public void should_return_score_1890_when_calculate_given_800_sale_and_2000_notsale() {
+        Goods tv = new Goods("TV", BigDecimal.valueOf(800), GoodsType.TV);
+        Goods washer = new Goods("WASHER", BigDecimal.valueOf(2000), GoodsType.OTHER);
+
+        List<Goods> goodsList = Arrays.asList(tv,washer);
+        Calculator calculator = new Calculator();
+        BigDecimal price = calculator.calculatePrice(goodsList);
+        int result = calculator.calculateScore(price, goodsList);
+        assertEquals(1890, result);
     }
 }
