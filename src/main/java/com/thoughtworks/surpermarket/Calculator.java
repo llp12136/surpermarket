@@ -38,10 +38,14 @@ public class Calculator {
         BigDecimal notsalePrice = calculator.calculateNotSalePrice(goodsList);
 
         if (price.intValue() > 1000) {
-
-            score = salePrice.multiply(BigDecimal.valueOf(2));
-            score = score.add(BigDecimal.valueOf(1000 - salePrice.intValue())).
-                    add((notsalePrice.subtract(BigDecimal.valueOf(1000 - salePrice.intValue())).divide(BigDecimal.valueOf(20))));
+            if (salePrice.intValue() > 1000) {
+                score = BigDecimal.valueOf(2000).add(salePrice).subtract(BigDecimal.valueOf(1000)).add(notsalePrice.divide(BigDecimal.valueOf(20)));
+        }
+            else {
+                score = salePrice.multiply(BigDecimal.valueOf(2));
+                score = score.add(BigDecimal.valueOf(1000 - salePrice.intValue())).
+                        add((notsalePrice.subtract(BigDecimal.valueOf(1000 - salePrice.intValue())).divide(BigDecimal.valueOf(20))));
+            }
         } else
             for (Goods goods : goodsList
             ) {
