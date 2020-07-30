@@ -13,8 +13,8 @@ public class CalculatorTest {
     public void should_return_score_1_when_calculate_given_price_1() {
         Goods goods = new Goods("WATER", BigDecimal.valueOf(1), GoodsType.OTHER);
         List<Goods> goodsList = Arrays.asList(goods);
-        Calculator calulator = new Calculator();
-        int result = calulator.calculatePrice(goodsList).intValue();
+        Calculator calculator = new Calculator();
+        int result = calculator.calculatePrice(goodsList).intValue();
         assertEquals(1, result);
     }
 
@@ -22,8 +22,17 @@ public class CalculatorTest {
     public void should_return_score_100_when_calculate_given_price_100() {
         Goods goods = new Goods("APPLE", BigDecimal.valueOf(100), GoodsType.OTHER);
         List<Goods> goodsList = Arrays.asList(goods);
-        Calculator calulator = new Calculator();
-        int result = calulator.calculatePrice(goodsList).intValue();
+        Calculator calculator = new Calculator();
+        int result = calculator.calculatePrice(goodsList).intValue();
         assertEquals(100, result);
+    }
+
+    @Test
+    public void should_return_score_110_when_calculate_given_price_1() {
+        Goods goods = new Goods("OTHER", BigDecimal.valueOf(110), GoodsType.OTHER);
+        List<Goods> goodsList = Arrays.asList(goods);
+        Calculator calculator = new Calculator();
+        int result = calculator.calculatePrice(goodsList).intValue();
+        assertEquals(110, result);
     }
 }
