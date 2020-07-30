@@ -58,4 +58,15 @@ public class CalculatorTest {
         int result = calculator.calculateScore(price, goodsList);
         assertEquals(1067, result);
     }
+
+    @Test
+    public void should_return_score_3000_when_calculate_given_TV_2000_sale() {
+        Goods ICEBOX = new Goods("TV", BigDecimal.valueOf(2000), GoodsType.TV);
+
+        List<Goods> goodsList = Arrays.asList(ICEBOX);
+        Calculator calulator = new Calculator();
+        BigDecimal price = calulator.calculatePrice(goodsList);
+        int result = calulator.calculateScore(price, goodsList);
+        assertEquals(3000, result);
+    }
 }
