@@ -35,14 +35,23 @@ public class Calculator {
         BigDecimal score = BigDecimal.ZERO;
         Calculator calculator = new Calculator();
         BigDecimal salePrice = calculator.calculateSalePrice(goodsList);
+        BigDecimal notsalePrice = calculator.calculateNotSalePrice(goodsList);
 
-        for (Goods goods : goodsList) {
-            if (goods.notSale(goods.getGoodsType())) {
-                score = score.add(goods.getPrice());
+        if (price.intValue() > 1000) {
+
+            score = salePrice.multiply(BigDecimal.valueOf(2));
+            score = score.add(BigDecimal.valueOf(1000 - salePrice.intValue())).
+                    add((notsalePrice.subtract(BigDecimal.valueOf(1000 - salePrice.intValue())).divide(BigDecimal.valueOf(20))));
+        } else
+            for (Goods goods : goodsList
+            ) {
+                if (goods.notSale(goods.getGoodsType())) {
+                    score = score.add(goods.getPrice());
+                } else {
+                    score = score.add(goods.getPrice());
+                    score = score.add(goods.getPrice());
+                }
             }
-        }
-
-        score = score.add(salePrice.multiply(BigDecimal.valueOf(2)));
         return score.intValue();
     }
 }

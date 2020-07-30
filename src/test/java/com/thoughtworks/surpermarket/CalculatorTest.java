@@ -49,13 +49,13 @@ public class CalculatorTest {
     }
 
     @Test
-    public void should_return_score_1050_when_calculate_given_2000_sale() {
-        Goods ICEBOX = new Goods("WATER", BigDecimal.valueOf(2000), GoodsType.OTHER);
+    public void should_return_score_1067_when_calculate_given_2350_sale() {
+        Goods ICEBOX = new Goods("ICEBOX", BigDecimal.valueOf(2350), GoodsType.OTHER);
 
         List<Goods> goodsList = Arrays.asList(ICEBOX);
         Calculator calculator = new Calculator();
         BigDecimal price = calculator.calculatePrice(goodsList);
         int result = calculator.calculateScore(price, goodsList);
-        assertEquals(1050, result);
+        assertEquals(1067, result);
     }
 }
